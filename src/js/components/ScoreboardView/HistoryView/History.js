@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export default class CurrentLeader extends React.Component {
+export default class History extends React.Component {
   render() {
     return (
       <div>

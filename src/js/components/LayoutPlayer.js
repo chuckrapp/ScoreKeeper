@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 
 import CurrentLeader from "./PlayerView/CurrentLeader";
 import PlayerStats from "./PlayerView/PlayerStats";
-import Buttons from "./PlayerView/Buttons";
 
 export default class LayoutPlayer extends React.Component {
   render() {
@@ -16,7 +15,9 @@ export default class LayoutPlayer extends React.Component {
           <br />
           <PlayerStats />
           <br />
-          <Buttons />
+          <button type="button" class="btn btn-primary btn-lg btn-block">Round End</button>
+          <button type="button" class="btn btn-warning btn-lg btn-block">See Standings</button>
+          <button type="button" class="btn btn-warning btn-lg btn-block">See Scoreboard</button>
         </div>
       </div>
     );
