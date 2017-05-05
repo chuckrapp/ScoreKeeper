@@ -6,14 +6,14 @@ export default class Standings extends React.Component {
     return (
       <div>
         <div className="col-md-12">
-          <h4>Standings</h4> 
-          <table class="table text-center">
+          <h2>Standings</h2> 
+          <table className="table">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Level</th>
-                <th>Score</th>
+                <th align="center">#</th>
+                <th align="center">Name</th>
+                <th align="center">Level</th>
+                <th align="center">Score</th>
               </tr>
             </thead>
             <tbody>
