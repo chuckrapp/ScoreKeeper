@@ -10,36 +10,37 @@ export default class Standings extends React.Component {
           <table className="table">
             <thead>
               <tr>
-                <th align="center">#</th>
-                <th align="center">Name</th>
-                <th align="center">Level</th>
-                <th align="center">Score</th>
+                <th>#</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Score</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">1</th>
-                <td>Vickie</td>
-                <td>444</td>
-                <td>51</td>
+                <td>Alex</td>
+                <td>334</td>
+                <td>19</td>
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>Alex</td>
+                <td>Ward</td>
                 <td>334</td>
-                <td>73</td>
+                <td>41</td>
               </tr>
+              
               <tr>
                 <th scope="row">3</th>
-                <td>Ward</td>
-                <td>333</td>
-                <td>135</td>
+                <td>Vickie</td>
+                <td>334</td>
+                <td>37</td>
               </tr>
               <tr>
                 <th scope="row">4</th>
                 <td>Chuck</td>
                 <td>44</td>
-                <td>322</td>
+                <td>232</td>
               </tr>
             </tbody>
           </table>
