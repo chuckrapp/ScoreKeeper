@@ -18,7 +18,7 @@ export default class Tables extends React.Component {
               </div>
             </div>
             {/*Titles and Descriptions will populate from the DOM create table Modal*/}
-            <div className="row">
+            <div className="row largePadding">
               <div className="card-deck text-center">
                 <Card title={"334"} desc={"A contract rummy game with 7 stages!"} />
                 <Card title={"Munchkin"} desc={"A fun game where you kick down doors and fight monsters!"} />

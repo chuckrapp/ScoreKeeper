@@ -8,7 +8,7 @@ export default class PlayerStats extends React.Component {
         
         <div className="col-xs-6">
           <h4>Your Score</h4> {/*static info*/}
-          <h1>245</h1> {/*info from database*/}
+          <h1>323</h1> {/*info from database*/}
         </div>
 
         <div className="col-xs-6">

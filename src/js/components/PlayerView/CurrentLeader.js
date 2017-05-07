@@ -7,7 +7,7 @@ export default class CurrentLeader extends React.Component {
       <div>
         <div className="col-md-12">
           <h4>Current Leader</h4> {/*static info*/}
-          <h2>Chuck</h2> {/*info from database*/}
+          <h2>Alex</h2> {/*info from database*/}
         </div>
       </div>
     );
