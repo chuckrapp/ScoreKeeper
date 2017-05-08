@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 import Navbar from "../components/Navbar";
 
@@ -20,8 +21,19 @@ export default class LayoutPlayer extends React.Component {
             <div className="col-lg-3">
             </div>
           </div>
+          <div className="row">
+            <div className="col-md-3"></div>
+            <div className="col-md-3">
+              <Link to="player"><button type="button" className="btn btn-warning btn-lg btn-block btm-space">Back</button></Link>
+            </div>
+            <div className="col-md-3">
+              <Link to="history"><button type="button" className="btn btn-primary btn-lg btn-block btm-space">View History</button></Link>
+            </div>
+            <div className="col-md-3"></div>
+          </div>
         </div>
       </div>
+
     );
   }
 }

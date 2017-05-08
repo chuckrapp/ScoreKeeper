@@ -19,10 +19,14 @@ th {
   font-weight: 600;
 }
 
-.btm-space {
+.btm-sm-space {
   margin-bottom: 5px;
 }
 
-.largePadding {
+.btm-md-space {
+  margin-bottom: 15px;
+}
+
+.btm-lg-space {
   margin-bottom: 75px;
 }

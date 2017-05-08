@@ -16,10 +16,23 @@ export default class LayoutPlayer extends React.Component {
           <br />
           <PlayerStats />
           <br />
-          <Link to=""><button type="button" className="btn btn-primary btn-lg btn-block btm-space">Round End</button></Link>
-          <Link to="standings"><button type="button" className="btn btn-warning btn-lg btn-block btm-space">See Standings</button></Link>
-          <Link to="history"><button type="button" className="btn btn-warning btn-lg btn-block btm-space">See History</button></Link>
-          
+          <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
+              <Link to=""><button type="button" className="btn btn-primary btn-lg btn-block btm-sm-space">Round End</button></Link>
+              <div className="col-md-2"></div>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-2"></div>
+            <div className="col-md-4">
+              <Link to="standings"><button type="button" className="btn btn-warning btn-lg btn-block btm-sm-space">See Standings</button></Link>
+            </div>
+            <div className="col-md-4">
+              <Link to="history"><button type="button" className="btn btn-warning btn-lg btn-block btm-sm-space">See History</button></Link>
+            </div>
+            <div className="col-md-2"></div>
+          </div>
         </div>
       </div>
     );
