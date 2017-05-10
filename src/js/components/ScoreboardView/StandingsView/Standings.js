@@ -2,7 +2,7 @@ import React from "react";
 import PlayerRow from "./PlayerRow";
 
 export default class Standings extends React.Component {
-  render() {
+  render() {    
     return (
       <div>
         <div className="row">
@@ -20,7 +20,7 @@ export default class Standings extends React.Component {
               <tbody>
                 {/******TO DO******/}
                 {/*Add a loop here for each player found at table*/}
-                <PlayerRow name={"Chuck"} level={"44"} score={"125"} />
+                <PlayerRow name={"Chuck"} level={"44"} score={"152"} />
                 <PlayerRow name={"Alex"} level={"334"} score={"15"}/>
                 <PlayerRow name={"Vickie"} level={"334"} score={"41"}/>
                 <PlayerRow name={"Ward"} level={"333"} score={"95"}/>
