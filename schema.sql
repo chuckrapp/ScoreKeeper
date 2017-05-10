@@ -1,11 +1,11 @@
-create database scoreKeeper_DB; --creates a database calles scoreKeeper_DB
-use scoreKeeper_db; --tells mySQL to use the database
+create database scoreKeeper_DB; -- creates a database calles scoreKeeper_DB
+use scoreKeeper_db; -- tells mySQL to use the database
 
 CREATE TABLE users (
-    id INT(11) AUTO_INCREMENT NOT NULL, --userID - automatically set
-    username VARCHAR(30) NOT NULL, --username max 30 chars required
-    password VARCHAR(30) NOT NULL, --password mac 30 chars required
-    PRIMARY KEY (id) --sets primary key to userID
+    id INT(11) AUTO_INCREMENT NOT NULL, -- userID - automatically set
+    username VARCHAR(30) NOT NULL, -- username max 30 chars required
+    password VARCHAR(30) NOT NULL, -- password mac 30 chars required
+    PRIMARY KEY (id) -- sets primary key to userID
 );
 
 CREATE TABLE games (
@@ -29,6 +29,10 @@ CREATE TABLE games_list (
     description VARCHAR(100) NOT NULL,
     PRIMARY KEY (id)
 );
+
+INSERT INTO games_list (game, description)
+    VALUES ("334", "A contract rummy game with 7 stages!");
+    VALUES ('Open', 'This table is open! Click "Create" to start a new game!');
 
 -- History View
 --   - pulls all game info from user by user_id

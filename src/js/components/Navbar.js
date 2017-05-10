@@ -19,16 +19,18 @@ export default class Navbar extends React.Component {
               </div>
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav navbar-right">
-                  <li><a href="#">Login</a></li>
+                  {/*<li><a href="#">Login</a></li>*/}
                   <li className="dropdown">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Layouts <span className="caret"></span></a>
                     <ul className="dropdown-menu">
-                      <li><a href="#/">Tables Menu</a></li>
-                      <li><a href="#/player">Player Screen</a></li>
-                      <li><a href="#/scoreboard">Scoreboard View</a></li>
+                      <li><a href="#/">Login</a></li>
+                      <li><a href="#/">Logout</a></li>
+                      <li><a href="#/">Leave Table (Quit game)</a></li>
+                      <li><a href="#/">Settings</a></li>
+                      <li><a href="#/">View Past Games</a></li>
                       <li role="separator" className="divider"></li>
-                      <li><a href="#/standings">Standings Only</a></li>
-                      <li><a href="#/history">History Only</a></li>
+                      <li><a href="#/player">Player View</a></li>
+                      <li><a href="#/scoreboard">Scoreboard View</a></li>
                     </ul>
                   </li>
                 </ul>
