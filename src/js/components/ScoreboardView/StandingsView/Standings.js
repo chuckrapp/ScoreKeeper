@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import PlayerRow from "./PlayerRow";
 
 export default class Standings extends React.Component {
   render() {
@@ -18,31 +18,12 @@ export default class Standings extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Alex</td>
-                  <td>334</td>
-                  <td>19</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Ward</td>
-                  <td>334</td>
-                  <td>41</td>
-                </tr>
-
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Vickie</td>
-                  <td>334</td>
-                  <td>37</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Chuck</td>
-                  <td>44</td>
-                  <td>232</td>
-                </tr>
+                {/******TO DO******/}
+                {/*Add a loop here for each player found at table*/}
+                <PlayerRow name={"Chuck"} level={"44"} score={"125"} />
+                <PlayerRow name={"Alex"} level={"334"} score={"15"}/>
+                <PlayerRow name={"Vickie"} level={"334"} score={"41"}/>
+                <PlayerRow name={"Ward"} level={"333"} score={"95"}/>
               </tbody>
             </table>
           </div>

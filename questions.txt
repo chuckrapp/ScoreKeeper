@@ -1,0 +1,4 @@
+questions to ask:
+    - with Cards.js and Tables.js, how do I tie card and description to the table#
+    - same for standings and playerRow once I add a loop - how does this.props.name know which user to pull??
+    
