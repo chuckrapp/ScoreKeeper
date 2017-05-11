@@ -1,0 +1,15 @@
+TODO:
+ - fully connect database
+   - add all links to database
+ - add modal component
+ - add authentication
+ - add loop to Standings.js
+
+
+Look into:
+ - componentDidLoad
+ - on state change
+
+
+ IF time
+  - google visualization api for charts and such
