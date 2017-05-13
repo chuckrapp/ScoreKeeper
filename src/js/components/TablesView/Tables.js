@@ -20,17 +20,18 @@ export default class Tables extends React.Component {
             {/*Titles and Descriptions will populate from the DOM create table Modal*/}
             <div className="row btm-lg-space">
               <div className="card-deck text-center">
-                <Card title={"334"} desc={"A contract rummy game with 7 stages!"} /> {/*game from game setup modal but description from database*/}
-                <Card title={"334"} desc={"A contract rummy game with 7 stages!"} />
-                <Card title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={1} title={"334"} desc={"A contract rummy game with 7 stages!"} /> {/*game from game setup modal but description from database*/}
+                <Card key={2} title={"334"} desc={"A contract rummy game with 7 stages!"} />
+                <Card key={3} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
               </div>
             </div>
 
+
             <div className="row">
               <div className="card-deck text-center">
-                <Card title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
-                <Card title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
-                <Card title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={4} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={5} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={6} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
               </div>
             </div>
 
