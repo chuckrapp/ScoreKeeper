@@ -22,9 +22,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static(path.join(__dirname, "js")));
 
-var queryString = 'SELECT * FROM games_list'
+var allGamesList = function() {
+  return 'SELECT * FROM games_list'
+}
 
-connection.query(queryString, function (err, rows, fields) {
+connection.query(allGamesList, function (err, rows, fields) {
   if (err) throw err;
 
   for (var i in rows) {
@@ -32,8 +34,11 @@ connection.query(queryString, function (err, rows, fields) {
   }
 })
 
+// app.engine('html', require('ejs').renderFile);
+// app.set('view engine', 'html');
+
 app.get('/', function (req, res) {
-  res.render("index");
+  res.send("hello world");
 });
 
 app.listen(3000, function () {
