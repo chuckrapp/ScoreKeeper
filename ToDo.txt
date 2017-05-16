@@ -1,9 +1,8 @@
 TODO:
- - fully connect database
-   - add all links to database
+ - get database components loaded onto react pages
  - add modal component
  - add authentication
- - add loop to Standings.js
+ - 
 
 
 Look into:

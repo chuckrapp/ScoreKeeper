@@ -21,14 +21,14 @@ export default class Navbar extends React.Component {
                 <ul className="nav navbar-nav navbar-right">
                   {/*<li><a href="#">Login</a></li>*/}
                   <li className="dropdown">
-                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Layouts <span className="caret"></span></a>
+                    <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">USER NAME <span className="caret"></span></a>
                     <ul className="dropdown-menu">
                       <li><a href="#/">Login</a></li>
                       <li><a href="#/">Logout</a></li>
                       <li><a href="#/">Leave Table (Quit game)</a></li>
                       <li><a href="#/">Settings</a></li>
                       <li><a href="#/">View Past Games</a></li>
-                      <li role="separator" className="divider"></li>
+                      <li role="separator" className="divider"><hr /></li>
                       <li><a href="#/player">Player View</a></li>
                       <li><a href="#/scoreboard">Scoreboard View</a></li>
                     </ul>

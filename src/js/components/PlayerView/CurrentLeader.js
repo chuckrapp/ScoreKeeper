@@ -8,7 +8,7 @@ export default class CurrentLeader extends React.Component {
   }
 
   componentWillMount() {
-    var url = 'localhost:1337/api/currentLeader';
+    var url = '/api/currentLeader';
     Request.get(url).then((response) => {
       this.setState({
         leader: response
