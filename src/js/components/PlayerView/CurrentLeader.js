@@ -1,7 +1,16 @@
 import React from "react";
-
+import Axios from "axios";
 
 export default class CurrentLeader extends React.Component {
+  componentWillMount() {
+    axios.get('/user?ID=12345')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   render() {
     return (
       <div>
@@ -13,4 +22,4 @@ export default class CurrentLeader extends React.Component {
     );
   }
 }
-{/*<script type='text/javascript' src='./js/playerView.js'></script>*/}
+{/*<script type='text/javascript' src='./js/playerView.js'></script>*/ }
