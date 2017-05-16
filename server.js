@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var connection = require('./src/config/connection.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -14,6 +15,15 @@ var router = express.Router();
 router.get('/', function(req, res) {
   res.json({ message: 'hooray it worked' });
 })
+
+router.get('/currentLeader', function(req, res) {
+    var dbQuery = 'SELECT * FROM users WHERE username = "Chuck"';
+    
+
+    connection.query(dbQuery, function(err, result) {
+      res.json(result[0].username);
+    });
+  });
 
 app.use('/api', router);
 

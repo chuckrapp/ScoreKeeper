@@ -1,12 +1,15 @@
 var connection = require("../config/connection.js");
+var routes = require('../../server.js');
 
-module.exports = function(app) {
-  app.get("./api/currentLeader", function(req, res) {
-    var dbQuery = 'SELECT * FROM users WHERE username = "Chuck"';
-    
+router.get('/', function(req, res) {
+  res.json({ message: 'hooray it worked' });
+})
 
-    connection.query(dbQuery, function(err, result) {
-      res.json(result);
-    });
+router.get('/currentLeader', function(req, res) {
+  var dbQuery = 'SELECT * FROM users WHERE username = "Chuck"';
+
+
+  connection.query(dbQuery, function(err, result) {
+    res.json(result);
   });
-};
+});

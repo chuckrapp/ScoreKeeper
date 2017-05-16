@@ -15,7 +15,6 @@ export default class CurrentLeader extends React.Component {
       })
     })
   }
-
   render() {
     return (
       <div>
@@ -27,4 +26,4 @@ export default class CurrentLeader extends React.Component {
     );
   }
 }
-{/*<script type='text/javascript' src='./js/playerView.js'></script>*/}
+{/*<script type='text/javascript' src='./js/playerView.js'></script>*/ }
