@@ -1,8 +1,8 @@
 TODO:
- - get database components loaded onto react pages
- - add modal component
+ - get round end button to push to DB
+ - get components to reload on change rather than on page refresh
  - add authentication
- - 
+ - add functionality to menu buttons
 
 
 Look into:
