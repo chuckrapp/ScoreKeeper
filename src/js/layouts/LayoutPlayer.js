@@ -20,7 +20,7 @@ export default class LayoutPlayer extends React.Component {
           <div className="row">
             <div className="col-md-2"></div>
             <div className="col-md-8">
-              <Link to=""><button type="button" className="btn btn-primary btn-lg btn-block btm-sm-space">Round End</button></Link>
+              <Link to=""><button type="button" className="btn btn-primary btn-lg btn-block btm-sm-space" data-toggle="modal" data-target="#exampleModal">Round End</button></Link>
               <div className="col-md-2"></div>
             </div>
           </div>
@@ -35,8 +35,53 @@ export default class LayoutPlayer extends React.Component {
             <div className="col-md-2"></div>
           </div>
         </div>
+        {/*Modal*/}
+        {/*<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Create Game!
+              </button>*/}
+
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h1 className="modal-title text-center" id="exampleModalLabel"><b>Round Over!</b></h1>
+
+              </div>
+              <div className="modal-body">
+
+                <form>
+                  <div className="form-group">
+                    <h3>How many points are you adding?</h3>
+                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder='Ex. "19"' />
+                  </div>
+                  <div className="form-check">
+                    <h3>Are you advancing?</h3>
+                    <label className="form-check-label">
+                      <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
+                      Movin' on up!!!'
+                    </label>
+                  </div>
+                  <div className="form-check">
+                    <label className="form-check-label">
+                      <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                      Dang it, I got set!
+                    </label>
+                  </div>
+                </form>
+
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-primary">Submit</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     );
   }
 }
-{/*<script type='text/javascript' src='./../playerView.js'></script>*/}
+{/*<script type='text/javascript' src='./../playerView.js'></script>*/ }

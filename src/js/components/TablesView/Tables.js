@@ -33,8 +33,6 @@ export default class Tables extends React.Component {
               <div className="card-deck text-center">
                 <Card key={4} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
                 <Card key={5} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
-            {/*<div id="mainModal"></div>*/}
-            <TableModal id="mainModal"></TableModal>
                 <Card key={6} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
               </div>
             </div>
