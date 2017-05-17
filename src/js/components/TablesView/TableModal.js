@@ -1,26 +1,46 @@
+import ReactModal from "react-modal";
 import React from "react";
+import ReactDOM from "react-dom";
+ReactModal.setAppElement('#mainModal');
 
 
-export default class TableModal extends React.Component {
-  render() {
-    $("#reactModal").modal("toggle");
+class TableModal extends React.Component {
+  constructor () {
+    super();
+    this.state = {
+      showModal: false
+    };
+    
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+  
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
+  
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
+  
+  render () {
     return (
-      <div className="modal" id="myModal">
-    <div className="modal-dialog">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h2 className="modal-title">Modal</h2>
-        </div>
-        <div className="modal-body">
-          <p>testestetstestetstdewfew fewfewfew fewfew</p>
-        </div>
+      <div>
+        <button onClick={this.handleOpenModal}>Trigger Modal</button>
+        <ReactModal 
+           isOpen={this.state.showModal}
+           contentLabel="onRequestClose Example"
+           onRequestClose={this.handleCloseModal}
+           shouldCloseOnOverlayClick={false}
+        >
+          <p>Modal text!</p>
+          <button onClick={this.handleCloseModal}>Close Modal</button>
+        </ReactModal>
       </div>
-    </div>
-  </div>
     );
   }
 }
-// container and presenters components in react
-// https://scotch.io/tutorials/speed-up-your-restful-api-development-in-node-js-with-swagger
-// https://visionmedia.github.io/superagent/
-// swagger
+
+const props = {};
+
+ReactDOM.render(<TableModal {...props} />, document.getElementById('mainModal'))
