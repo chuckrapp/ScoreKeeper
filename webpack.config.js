@@ -19,8 +19,33 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    // historyApiFallback: true,
+    // watchOptions: { aggregateTimeout: 300, poll: 1000 },
+    // port: 8080,
+    // Send API requests on localhost to API server get around CORS.
+    proxy: {
+      '/api': {
+        target: {
+          // host: "localhost",
+          host: "127.0.0.1",
+          protocol: 'http:',
+          port: 1337
+        },
+        // pathRewrite: {
+        //   '^/api': ''
+        // }
+      }
+    },
+
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    }
+  },
   output: {
-    path: __dirname + "/src/",
+    path: __dirname + "/src/config/",
     filename: "client.min.js"
   },
   plugins: debug ? [] : [

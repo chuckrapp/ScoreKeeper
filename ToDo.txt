@@ -8,6 +8,9 @@ TODO:
 Look into:
  - componentDidLoad
  - on state change
+ - heroku listen to 2 ports or set up proxy on heroku
+
+ willReceiveProps()
 
 
  IF time

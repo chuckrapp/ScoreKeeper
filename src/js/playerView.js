@@ -1,8 +1,8 @@
-console.log('test');
-$.get("/api/currentLeader", function(data) {
+$.get("127.0.0.1:1337/api/currentLeader", function (data) {
 
-console.log("hello");
+  console.log("currentLeader");
 
-     $("#currentLead").text(data);
+  console.log(data);
+  $("#currentLead").text(data);
 
 });

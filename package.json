@@ -31,7 +31,7 @@
     "nodemon": "^1.11.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot",
+    "dev": "webpack && webpack-dev-server --content-base src --inline --hot && webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

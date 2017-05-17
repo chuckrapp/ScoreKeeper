@@ -1,20 +1,24 @@
 import React from "react";
-import Request from "superagent";
+// import Request from "superagent";
+import Axios from "axios";
 
 export default class CurrentLeader extends React.Component {
   constructor(){
     super();
-    this.state = {}
+    this.state = {leader: "LEADER"}
   }
-
+  
   componentWillMount() {
     var url = '/api/currentLeader';
-    Request.get(url).then((response) => {
+    Axios.get(url).then((response) => {
       this.setState({
-        leader: response
+        leader: response.data
       })
+    }).catch((err) => {
+      console.error(err)
     })
   }
+
   render() {
     return (
       <div>
@@ -26,4 +30,3 @@ export default class CurrentLeader extends React.Component {
     );
   }
 }
-{/*<script type='text/javascript' src='./js/playerView.js'></script>*/ }
