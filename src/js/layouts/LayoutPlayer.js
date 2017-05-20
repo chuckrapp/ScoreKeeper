@@ -40,14 +40,14 @@ export default class LayoutPlayer extends React.Component {
           Create Game!
               </button>*/}
 
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h1 className="modal-title text-center" id="exampleModalLabel"><b>Round Over!</b></h1>
+                <h1 className="modal-title text-center" id="modalLabel"><b>Round Over!</b></h1>
 
               </div>
               <div className="modal-body">
@@ -55,18 +55,18 @@ export default class LayoutPlayer extends React.Component {
                 <form>
                   <div className="form-group">
                     <h3>How many points are you adding?</h3>
-                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder='Ex. "19"' />
+                    <input type="text" className="form-control" id="udScore" placeholder='Ex. "19"' />
                   </div>
                   <div className="form-check">
                     <h3>Are you advancing?</h3>
                     <label className="form-check-label">
-                      <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" />
+                      <input className="form-check-input" type="radio" name="udAdvance" id="advYes" value="option1" />
                       Movin' on up!!!'
                     </label>
                   </div>
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" />
+                      <input className="form-check-input" type="radio" name="udAdvance" id="advNo" value="option2" />
                       Dang it, I got set!
                     </label>
                   </div>

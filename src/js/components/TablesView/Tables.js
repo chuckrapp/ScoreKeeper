@@ -23,19 +23,19 @@ export default class Tables extends React.Component {
             <div className="row btm-lg-space">
               <div className="card-deck text-center">
                 <Card key={1} title={"334"} desc={"A contract rummy game with 7 stages!"} /> {/*game from game setup modal but description from database*/}
-                <Card key={2} title={"334"} desc={"A contract rummy game with 7 stages!"} />
-                <Card key={3} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={2} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={3} title={"Closed"} desc={'This table is temporarily closed. Its coming soon though!'} />
               </div>
             </div>
 
 
-            <div className="row">
+            {/*<div className="row">
               <div className="card-deck text-center">
-                <Card key={4} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
-                <Card key={5} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
-                <Card key={6} title={"Open"} desc={'This table is open! Click "Create" to start a new game!'} />
+                <Card key={4} title={"Closed"} desc={'This table is temporarily closed. Its coming soon though!'} />
+                <Card key={5} title={"Closed"} desc={'This table is temporarily closed. Its coming soon though!'} />
+                <Card key={6} title={"Closed"} desc={'This table is temporarily closed. Its coming soon though!'} />
               </div>
-            </div>
+            </div>*/}
 
           </div>
         </div>

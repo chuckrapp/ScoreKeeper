@@ -1,8 +1,11 @@
 TODO:
  - get round end button to push to DB
  - get components to reload on change rather than on page refresh
- - add authentication
+ - add authentication (google?)
  - add functionality to menu buttons
+ - update tables page to reflect open vs closed vs in process
+ - deploy to heroku
+ - get history section working and remove the weird spacing on right side in mobile view
 
 
 Look into:
