@@ -1,8 +1,7 @@
 import React from "react";
 
-import Navbar from "../components/Navbar";
-
 import Tables from "../components/TablesView/Tables";
+import Navbar from "../components/Navbar";
 
 export default class LayoutTables extends React.Component {
   render() {
