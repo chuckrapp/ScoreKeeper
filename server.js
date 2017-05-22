@@ -1,7 +1,11 @@
 var express = require('express');
+var Sequelize = require('sequelize');
+var mysql = require("mysql");
 var app = express();
 var bodyParser = require('body-parser');
-var connection = require('./src/config/connection.js');
+// var connection = require('./src/config/connection.js');
+
+
 
 //set the port#
 var PORT = process.env.PORT || 1337;
@@ -21,34 +25,136 @@ app.use(express.static("src"));
 //----   ROUTES   ----
 //--------------------
 
-//main page to make sure its connected
-router.get('/', function (req, res) {
-  res.json({ message: 'hooray it worked' });
-})
+// const Users = connection.define('users', {
+//   username: Sequelize.STRING,
+//   password: Sequelize.STRING
+// });
+// connection.sync();
+
+const connection = new Sequelize('scoreKeeper_DB', 'root', 'password');
+
+//defining the tables
+const Users = connection.define(
+  'Users', {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    username: Sequelize.STRING,
+    password: Sequelize.STRING
+  });
+
+const Rounds334 = connection.define(
+  'Rounds334', {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    round: Sequelize.STRING
+  });
+
+const Games = connection.define(
+  'Games', {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    user_id: Sequelize.INTEGER,
+    table_number: Sequelize.INTEGER,
+    game_date: Sequelize.DATE,
+    game_name: Sequelize.STRING,
+    game_won: Sequelize.BOOLEAN,
+    game_open: Sequelize.BOOLEAN,
+    user_score: Sequelize.INTEGER,
+    user_round: Sequelize.INTEGER,
+    user_standing: Sequelize.INTEGER
+  });
+
+const Games_list = connection.define(
+  'Games_list', {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    game: Sequelize.STRING,
+    description: Sequelize.STRING
+  });
+
+//defining the joins
+Users.belongsTo(Games, {foreignKey: 'user_id'}, {underscored: true});
+Games.belongsTo(Users, {foreignKey: 'id'});
+
+
 
 //test to make sure I can receive different data from the database
 router.get('/test', function (req, res) {
-  // var user = ""
-  // var dbQuery = '"SELECT * FROM users WHERE id=?", [req.params.id]';
-  connection.query("SELECT * FROM users WHERE id=?", [req.params.id], function (err, result) {
-    if (err) throw err;
-    res.json(result);
+  connection.sync().then(function () {
+    Users.findById(1).then(function (users) {
+      res.json(users.username);
+    });
   });
 });
 
 //Standings to return Username of the current leader
-  //TO DO -- update WHERE to take in a table number (currently hard coded)
+//TO DO -- update WHERE to take in a table number (currently hard coded)
 router.get('/currentLeader', function (req, res) {
-  // var table_num = "1";
-  var dbQuery = 'SELECT users.username, games.user_score, games.user_round FROM games INNER JOIN users ON games.user_id=users.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score'; 
-  connection.query(dbQuery, function (err, result) {
-    if (err) throw err;
-    res.json(result[0].username);
+
+  connection.sync().then(function () {
+    Games.findAll({
+      include: [
+        {
+          model: Users,
+          as: 'user_id',
+          include: [
+            {
+              model: Rounds334,
+              as: 'id',
+            }
+          ]
+        }
+      ]
+    }).then(function () {
+      Games.findAll({
+        attributes: [['Users.username', 'username'], ['Rounds334.round', 'round'], ['Games.user_score', 'score']],
+        where: {
+          table_number: 1,
+          game_open: 1
+        },
+        order: [
+          'user_round', 'DESC',
+          'user_score'
+        ]
+      });
+    });
   });
+
+
+
+  // "SELECT users.username, 334Rounds.round, games.user_score"
+  // "FROM games"
+  // "INNER JOIN users ON games.user_id=users.id"
+  // "INNER JOIN 334Rounds ON games.user_round=334Rounds.id"
+  // "WHERE table_number = 1"
+  // "AND game_open = 1"
+  // "ORDER BY user_round DESC, user_score"
+
+
+
+
+
+  // var dbQuery = 'SELECT users.username, 334Rounds.round, games.user_score FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score';
+  // connection.query(dbQuery, function (err, result) {
+  //   if (err) throw err;
+  //   res.json(result);
+  // });
 });
 
 //Standings to return Username, score and round --Sorted by winner
-  //TO DO -- update WHERE to take in a table number (currently hard coded)
+//TO DO -- update WHERE to take in a table number (currently hard coded)
 router.get('/standings', function (req, res) {
   var dbQuery = 'SELECT users.username, 334Rounds.round, games.user_score FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score';
   connection.query(dbQuery, function (err, result) {
@@ -58,7 +164,7 @@ router.get('/standings', function (req, res) {
 });
 
 //UserStats to return the score, and round name for the player specified
-  //TO DO - get ID from login and tie to player name
+//TO DO - get ID from login and tie to player name
 router.get('/userStats', function (req, res) {
   var dbQuery = 'SELECT users.username, games.user_score, 334Rounds.round FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE username = "Chuck" AND table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score';
   connection.query(dbQuery, function (err, result) {
@@ -69,11 +175,11 @@ router.get('/userStats', function (req, res) {
 
 //POST to update player score after round
 router.put('/updateScore', function (req, res) {
-   var userData  = req.body;
-   connection.query('UPDATE games SET ? WHERE user_id=1 AND table_number=1 AND game_open=1', userData, function (error, results, fields) {
-   if (error) throw error;
-   res.end(JSON.stringify(results));
- });
+  var userData = req.body;
+  connection.query('UPDATE games SET ? WHERE user_id=1 AND table_number=1 AND game_open=1', userData, function (error, results, fields) {
+    if (error) throw error;
+    res.end(JSON.stringify(results));
+  });
 });
 
 //------------------

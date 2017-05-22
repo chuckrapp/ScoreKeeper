@@ -30,3 +30,11 @@ th {
 .btm-lg-space {
   margin-bottom: 75px;
 }
+
+#currentLeadStats {
+  margin-top: 5px;
+}
+
+#currentLead {
+  margin-bottom: 5px;
+}

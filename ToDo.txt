@@ -1,12 +1,15 @@
 TODO:
+ - add sequelize to api calls
  - get round end button to push to DB
- - get components to reload on change rather than on page refresh
- - add authentication (google?)
- - add functionality to menu buttons
+ - finish authentication (google?)
  - update tables page to reflect open vs closed vs in process
+
+ ----------------------------------------------------------------------------------------------
+ 
  - deploy to heroku
  - get history section working and remove the weird spacing on right side in mobile view
-
+ - get components to reload on change rather than on page refresh (Try SOCKET-IO)
+ - add functionality to menu buttons
 
 Look into:
  - componentDidLoad

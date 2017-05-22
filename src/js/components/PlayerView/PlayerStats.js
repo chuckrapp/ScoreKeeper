@@ -24,13 +24,13 @@ export default class PlayerStats extends React.Component {
       <div>
 
         <div className="col-xs-6">
-          <h4>Your Score</h4> {/*static info*/}
-          <h1 id="userScore">{this.state.score}</h1> {/*info from database*/}
+          <h4>Your Round</h4> {/*static info*/}
+          <h1 id="userRound">{this.state.round}</h1> {/*info from database*/}
         </div>
 
         <div className="col-xs-6">
-          <h4>Your Round</h4> {/*static info*/}
-          <h1 id="userRound">{this.state.round}</h1> {/*info from database*/}
+          <h4>Your Score</h4> {/*static info*/}
+          <h1 id="userScore">{this.state.score}</h1> {/*info from database*/}
         </div>
 
       </div>

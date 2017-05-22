@@ -35,6 +35,9 @@ export default class LayoutPlayer extends React.Component {
             <div className="col-md-2"></div>
           </div>
         </div>
+
+
+        
         {/*Modal*/}
         {/*<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
           Create Game!
@@ -84,4 +87,5 @@ export default class LayoutPlayer extends React.Component {
     );
   }
 }
+
 {/*<script type='text/javascript' src='./../playerView.js'></script>*/ }
