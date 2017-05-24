@@ -1,10 +1,11 @@
+var connect = require('connect');
+var bodyParser = require('body-parser');
 var express = require('express');
 var Sequelize = require('sequelize');
 var mysql = require("mysql");
-var app = express();
-var bodyParser = require('body-parser');
+var multer  = require('multer')
 // var connection = require('./src/config/connection.js');
-
+var app = express();
 
 
 //set the port#
@@ -16,8 +17,9 @@ var router = express.Router();
 app.use('/api', router);
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+// app.use(bodyParser.text());
+app.use(bodyParser.json());
+// app.use(bodyParser.json({ type: "application/*+json" }));
 
 app.use(express.static("src"));
 
@@ -71,7 +73,11 @@ const Games = connection.define(
     user_score: Sequelize.INTEGER,
     user_round: Sequelize.INTEGER,
     user_standing: Sequelize.INTEGER
-  });
+  }
+  // , {
+  //   freezeTableName: true
+  // }
+);
 
 const Games_list = connection.define(
   'Games_list', {
@@ -85,8 +91,9 @@ const Games_list = connection.define(
   });
 
 //defining the joins
-Users.belongsTo(Games, {foreignKey: 'user_id'}, {underscored: true});
-Games.belongsTo(Users, {foreignKey: 'id'});
+Games.hasOne(Users);
+Rounds334.belongsTo(Games);
+// Games.hasMany(Rounds334);
 
 
 
@@ -102,85 +109,56 @@ router.get('/test', function (req, res) {
 //Standings to return Username of the current leader
 //TO DO -- update WHERE to take in a table number (currently hard coded)
 router.get('/currentLeader', function (req, res) {
-
-  connection.sync().then(function () {
-    Games.findAll({
-      include: [
-        {
-          model: Users,
-          as: 'user_id',
-          include: [
-            {
-              model: Rounds334,
-              as: 'id',
-            }
-          ]
-        }
-      ]
-    }).then(function () {
-      Games.findAll({
-        attributes: [['Users.username', 'username'], ['Rounds334.round', 'round'], ['Games.user_score', 'score']],
-        where: {
-          table_number: 1,
-          game_open: 1
-        },
-        order: [
-          'user_round', 'DESC',
-          'user_score'
-        ]
-      });
-    });
-  });
-
-
-
-  // "SELECT users.username, 334Rounds.round, games.user_score"
-  // "FROM games"
-  // "INNER JOIN users ON games.user_id=users.id"
-  // "INNER JOIN 334Rounds ON games.user_round=334Rounds.id"
-  // "WHERE table_number = 1"
-  // "AND game_open = 1"
-  // "ORDER BY user_round DESC, user_score"
-
-
-
-
-
-  // var dbQuery = 'SELECT users.username, 334Rounds.round, games.user_score FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score';
-  // connection.query(dbQuery, function (err, result) {
-  //   if (err) throw err;
-  //   res.json(result);
-  // });
+  connection.query("SELECT users.username, 334Rounds.round, games.user_score FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score")
+    .spread((results, metadata) => {
+      res.json(results)
+    })
 });
 
 //Standings to return Username, score and round --Sorted by winner
 //TO DO -- update WHERE to take in a table number (currently hard coded)
 router.get('/standings', function (req, res) {
-  var dbQuery = 'SELECT users.username, 334Rounds.round, games.user_score FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score';
-  connection.query(dbQuery, function (err, result) {
-    if (err) throw err;
-    res.json(result);
-  });
+  connection.query("SELECT users.username, 334Rounds.round, games.user_score FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score")
+    .spread((results, metadata) => {
+      res.json(results)
+    })
 });
 
 //UserStats to return the score, and round name for the player specified
 //TO DO - get ID from login and tie to player name
 router.get('/userStats', function (req, res) {
-  var dbQuery = 'SELECT users.username, games.user_score, 334Rounds.round FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE username = "Chuck" AND table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score';
-  connection.query(dbQuery, function (err, result) {
-    if (err) throw err;
-    res.json(result);
-  });
+  connection.query('SELECT users.username, games.user_score, 334Rounds.round FROM games INNER JOIN users ON games.user_id=users.id INNER JOIN 334Rounds ON games.user_round=334Rounds.id WHERE username = "Chuck" AND table_number = 1 AND game_open = 1 ORDER BY user_round DESC, user_score')
+    .spread((results, metadata) => {
+      res.json(results)
+    });
 });
 
 //POST to update player score after round
 router.put('/updateScore', function (req, res) {
-  var userData = req.body;
-  connection.query('UPDATE games SET ? WHERE user_id=1 AND table_number=1 AND game_open=1', userData, function (error, results, fields) {
-    if (error) throw error;
-    res.end(JSON.stringify(results));
-  });
+  console.dir(req.body)
+  // var score = req.body.score;
+  // var adv = req.body.adv;
+  Games.update({
+    user_score: req.body.score,
+    user_round: req.body.adv
+  },
+    {
+      where: {
+        user_id: 1,
+        table_number: 1,
+        game_open: 1
+      }
+    });
+
 });
+
+
+//   var userData = req.body;
+//   connection.query('UPDATE games SET ? WHERE user_id=1 AND table_number=1 AND game_open=1', userData, function (error, results, fields) {
+//     if (error) throw error;
+//     res.end(JSON.stringify(results));
+//   });
+// });
 
 //------------------
 //------ TODO ------

@@ -6,7 +6,6 @@ import Navbar from "../components/Navbar";
 import CurrentLeader from "../components/PlayerView/CurrentLeader";
 import PlayerStats from "../components/PlayerView/PlayerStats";
 
-
 export default class LayoutPlayer extends React.Component {
   render() {
     return (
@@ -77,7 +76,7 @@ export default class LayoutPlayer extends React.Component {
 
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-primary">Submit</button>
+                <button id="btnUpdateDB" type="button" className="btn btn-primary">Submit</button>
               </div>
             </div>
 
@@ -88,4 +87,4 @@ export default class LayoutPlayer extends React.Component {
   }
 }
 
-{/*<script type='text/javascript' src='./../playerView.js'></script>*/ }
+{/*<script type='text/javascript' src='/../playerView.js'></script>*/}

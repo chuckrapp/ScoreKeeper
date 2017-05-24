@@ -1,0 +1,39 @@
+  // connection.sync().then(function () {
+  //   Users.findAll({
+  //     include: [
+  //       {
+  //         model: Games, 
+  //         include: [
+  //           {
+  //             model: Rounds334
+  //           }
+  //         ]
+  //       }
+  //     ]
+  //   })
+    // .then(Users => {
+    //   const resObj = Users.map(Users => {
+    //     return Object.assign(
+    //       {},
+    //       {
+    //         user_id: user_id,
+    //         user_score: user_score
+    //     //     username: users.username,
+    //     //     round: rounds334.round,
+    //     //     score: games.user_score
+    //       }
+    //     )
+    //   });
+    //   res.json(resObj)
+    // });
+  // });
+
+
+
+  // "SELECT users.username, 334Rounds.round, games.user_score"
+  // "FROM games"
+  // "INNER JOIN users ON games.user_id=users.id"
+  // "INNER JOIN 334Rounds ON games.user_round=334Rounds.id"
+  // "WHERE table_number = 1"
+  // "AND game_open = 1"
+  // "ORDER BY user_round DESC, user_score"
