@@ -7,6 +7,8 @@ var multer  = require('multer')
 // var connection = require('./src/config/connection.js');
 var app = express();
 
+var score;
+var adv;
 
 //set the port#
 var PORT = process.env.PORT || 1337;
@@ -136,11 +138,11 @@ router.get('/userStats', function (req, res) {
 //POST to update player score after round
 router.put('/updateScore', function (req, res) {
   console.dir(req.body)
-  // var score = req.body.score;
-  // var adv = req.body.adv;
+  score = req.params.score;
+  adv = req.params.adv;
   Games.update({
-    user_score: req.body.score,
-    user_round: req.body.adv
+    user_score: score,
+    user_round: adv
   },
     {
       where: {
@@ -178,3 +180,8 @@ router.put('/updateScore', function (req, res) {
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
+
+//-----------------------
+//------ SOCKET.IO ------
+//-----------------------
+
